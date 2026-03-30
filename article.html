@@ -252,6 +252,32 @@
                  </button>
              </div>
         </div>
+
+        <!-- Giscus Comments Section -->
+        <div class="mt-20 pt-10 border-t border-gray-100 dark:border-gray-800">
+            <h3 class="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-8 flex items-center gap-3">
+                <i class="fa-regular fa-comments text-primary"></i> التعليقات والنقاش
+            </h3>
+            <div id="giscus-container">
+                <script src="https://giscus.app/client.js"
+                    data-repo="hbouzourdaz/ph_blog"
+                    data-repo-id="R_kgDOR1GhUA"
+                    data-category="Announcements"
+                    data-category-id="DIC_kwDOR1GhUM4C5pI1"
+                    data-mapping="pathname"
+                    data-strict="0"
+                    data-reactions-enabled="1"
+                    data-emit-metadata="0"
+                    data-input-position="bottom"
+                    data-theme="preferred_color_scheme"
+                    data-lang="ar"
+                    data-loading="lazy"
+                    crossorigin="anonymous"
+                    async>
+                </script>
+            </div>
+        </div>
+
     </main>
 
     <!-- Scripts -->
@@ -407,19 +433,8 @@
                     scrollOffset: 0,
                 });
 
-                // --- Static Comments Placeholder ---
-                const commentsHtml = `
-                    <div id="comments-section" class="mt-16 pt-10 border-t border-gray-200 dark:border-gray-700">
-                        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">التعليقات</h3>
-                        <!-- Giscus Script Here -->
-                        <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl text-center border border-dashed border-gray-200 dark:border-gray-700">
-                            <i class="fa-regular fa-comments text-4xl text-gray-400 mb-4"></i>
-                            <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">نظام التعليقات جاهز للربط</h4>
-                            <p class="text-gray-500 text-sm max-w-md mx-auto">عندما تكون مستعداً، يمكنك بسهولة استبدال هذا الصندوق بـ سكريبت (Giscus) لتمكين الزوار من إضافة التعليقات السحابية باستخدام حساباتهم.</p>
-                        </div>
-                    </div>
-                `;
-                contentDiv.insertAdjacentHTML('beforeend', commentsHtml);
+
+
 
             } catch (e) {
                 showError("عذراً، حدث خطأ أثناء جلب محتوى المقال. تأكد من تشغيل الموقع عبر خادم محلي (Live Server).");

@@ -74,6 +74,9 @@
             </button>
         </form>
         
+        <p class="text-center text-xs text-gray-400 mt-6 mt-4">
+            الرقم السري الافتراضي هو: admin
+        </p>
     </div>
 
     <script>
@@ -81,7 +84,7 @@
             e.preventDefault();
             const pass = document.getElementById('password').value;
             // Password checked here - client side, used only to block normal users from accessing local static tools
-            if (pass === 'Hakim@1056#') {
+            if (pass === 'admin') {
                 localStorage.setItem('blog_admin', 'true');
                 window.location.href = 'editor.html';
             } else {
