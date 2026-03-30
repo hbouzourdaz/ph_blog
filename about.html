@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عن الكاتب | حكيم بوزورداز</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .nav-blur {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.85);
+        }
+        /* Dark Mode overrides via pure CSS fallback - Soft Black */
+        html.dark body { background-color: #121212; color: #e5e5e5; }
+        html.dark .nav-blur { background-color: rgba(18, 18, 18, 0.9); border-color: #2a2a2a; }
+        html.dark .bg-white { background-color: #1e1e1e; border-color: #2a2a2a; }
+        html.dark .text-gray-900, html.dark h1, html.dark h2, html.dark h3 { color: #ffffff !important; }
+        html.dark .text-gray-800 { color: #e5e5e5; }
+        html.dark .text-gray-600 { color: #a3a3a3; }
+        html.dark .text-gray-500 { color: #737373; }
+        html.dark .bg-gray-100 { background-color: #2a2a2a; }
+        html.dark .bg-gray-50 { background-color: #1e1e1e; }
+        html.dark .bg-gray-900 { background-color: #2a2a2a; color: white;}
+        html.dark .border-gray-100, html.dark .border-gray-200, html.dark .border-gray-700, html.dark .border-gray-800 { border-color: #2a2a2a !important; }
+    </style>
+    <script src="theme.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Alexandria', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+                    colors: { primary: '#2563eb' }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased transition-colors duration-300 relative">
+
+    <!-- Spacetime Grid & Glow Background -->
+    <div class="fixed inset-0 pointer-events-none z-[-1]">
+        <!-- Light Mode Grid -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:32px_32px] dark:hidden"></div>
+        <!-- Dark Mode Grid -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px] hidden dark:block"></div>
+        <!-- Ambient Quantum Glow -->
+        <div class="absolute left-0 right-0 top-0 h-[600px] w-full bg-[radial-gradient(circle_400px_at_50%_0%,#3b82f615,transparent)]"></div>
+    </div>
+    
+    <!-- Navbar -->
+    <nav class="fixed w-full top-0 z-50 nav-blur border-b border-gray-100 dark:border-gray-800 transition-all">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+            <div class="flex justify-between items-center h-16 relative">
+                <!-- Logo -->
+                <a href="index.html" class="font-extrabold text-xl tracking-tight text-gray-900 group hover:text-primary transition-colors flex items-center gap-2">
+                    <span class="text-primary font-serif italic text-2xl group-hover:rotate-12 transition-transform duration-300">Ψ</span>
+                    فيزياء<span class="text-primary opacity-50">.</span>تك
+                </a>
+                
+                <div class="hidden sm:flex items-center space-x-4 space-x-reverse">
+                    <button class="theme-toggle text-gray-400 hover:text-gray-900 transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer text-lg">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:block"></i>
+                    </button>
+                    <a href="index.html" class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors px-3 py-1.5 rounded-lg border border-transparent hover:bg-gray-50 dark:hover:bg-gray-800"><i class="fa-solid fa-home ml-1"></i> الرئيسية</a>
+                    <a href="about.html" class="text-sm font-medium text-primary bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400 px-3 py-1.5 rounded-lg border border-blue-100 dark:border-blue-800 shadow-sm transition-colors cursor-default"><i class="fa-regular fa-id-card ml-1"></i> عن الكاتب</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6 sm:px-8 pt-32 pb-24 fade-in">
+        
+        <div class="flex flex-col lg:flex-row gap-16 lg:gap-24 relative">
+            
+            <!-- Sticky Sidebar (Profile) -->
+            <aside class="lg:w-1/3 lg:sticky lg:top-32 h-max flex flex-col items-center lg:items-start text-center lg:text-right">
+                <div class="relative w-32 h-32 mb-8 group">
+                    <div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 rounded-full"></div>
+                    <div class="w-full h-full rounded-full overflow-hidden border border-gray-200 dark:border-gray-800 p-1 relative z-10 bg-white dark:bg-gray-900">
+                        <img src="https://ui-avatars.com/api/?name=Hakim+Bouzourdaz&background=121212&color=fff&size=200" alt="Hakim Bouzourdaz" class="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-500">
+                    </div>
+                </div>
+                
+                <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight">حكيم بوزورداز</h1>
+                <p class="text-gray-500 dark:text-gray-500 font-mono text-sm tracking-widest uppercase mb-8 leading-relaxed" dir="ltr">
+                    Physique des Rayonnements<br>&amp; Tech
+                </p>
+                
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-10 text-sm">
+                    أستاذ للفيزياء وشغوف بالتكنولوجيا. أدمج بين دراستي لفيزياء الإشعاعات وبين خبرتي في البرمجة لتقديم محتوى علمي وأدوات رقمية حديثة بأسلوب هندسي دقيق.
+                </p>
+
+                <div class="flex flex-col gap-4 w-full">
+                    <a href="mailto:hbouzourdaz@gmail.com" class="group flex items-center justify-between text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors border-b border-gray-100 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-600 pb-3">
+                        <span class="flex items-center gap-3"><i class="fa-regular fa-envelope"></i> البريد الإلكتروني</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-0 group-hover:opacity-100 transition-opacity translate-y-1 group-hover:translate-y-0 duration-300"></i>
+                    </a>
+                    <a href="https://github.com/hbouzourdaz" target="_blank" class="group flex items-center justify-between text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors border-b border-gray-100 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-600 pb-3">
+                        <span class="flex items-center gap-3"><i class="fa-brands fa-github"></i> GitHub</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-0 group-hover:opacity-100 transition-opacity translate-y-1 group-hover:translate-y-0 duration-300"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/hbouzourdaz" target="_blank" class="group flex items-center justify-between text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors border-b border-gray-100 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-600 pb-3">
+                        <span class="flex items-center gap-3"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-0 group-hover:opacity-100 transition-opacity translate-y-1 group-hover:translate-y-0 duration-300"></i>
+                    </a>
+                    <a href="CV_HAKIM_BOUZOURDAZ.pdf" download class="group flex items-center justify-center gap-2 text-sm font-bold text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors p-4 rounded-xl mt-6 border border-gray-200 dark:border-gray-700">
+                        <i class="fa-solid fa-file-pdf"></i> تحميل السيرة الذاتية (PDF)
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Content Grid -->
+            <div class="lg:w-2/3 flex flex-col gap-24 pt-4 lg:pt-8 line-he">
+                
+                <!-- Experience -->
+                <section>
+                    <div class="flex items-center gap-6 mb-12">
+                        <h2 class="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest shrink-0">الخبرة المهنية</h2>
+                        <div class="h-px w-full bg-gray-100 dark:bg-gray-800"></div>
+                    </div>
+                    
+                    <div class="group relative pr-6 sm:pr-8 border-r border-gray-200 dark:border-gray-800 hover:border-gray-400 dark:hover:border-gray-600 transition-colors duration-500">
+                        <div class="absolute right-[-4.5px] top-1.5 w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-primary group-hover:shadow-[0_0_10px_rgba(37,99,235,0.5)] transition-all duration-500"></div>
+                        <span class="text-xs text-gray-500 dark:text-gray-500 font-mono mb-3 block">سبتمبر 2021 — الحاضر</span>
+                        <h3 class="font-bold text-gray-900 dark:text-white text-xl mb-4 tracking-tight">أستاذ فيزياء <span class="text-xs font-mono font-normal text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-md mr-2">CEM</span></h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg">
+                            تجربة عملي الأولى في مجال التعليم، والتي أكسبتني القدرة المتفوقة على إيصال المعلومات المعقدة والعمل في جو احترافي وتفاعلي يعكس شخصيتي الأكاديمية.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Education -->
+                <section>
+                    <div class="flex items-center gap-6 mb-12">
+                        <h2 class="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest shrink-0">التعليم الأكاديمي</h2>
+                        <div class="h-px w-full bg-gray-100 dark:bg-gray-800"></div>
+                    </div>
+                    
+                    <div class="flex flex-col gap-14">
+                        <div class="group relative pr-6 sm:pr-8 border-r border-gray-200 dark:border-gray-800 hover:border-gray-400 dark:hover:border-gray-600 transition-colors duration-500">
+                            <div class="absolute right-[-4.5px] top-1.5 w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-primary group-hover:shadow-[0_0_10px_rgba(37,99,235,0.5)] transition-all duration-500"></div>
+                            <span class="text-xs text-gray-500 dark:text-gray-500 font-mono mb-3 block" dir="ltr">2019 — 2021</span>
+                            <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-2 tracking-tight">ماستر في فيزياء الإشعاعات</h3>
+                            <p class="text-sm text-gray-500">جامعة فرحات عباس سطيف-1</p>
+                        </div>
+                        
+                        <div class="group relative pr-6 sm:pr-8 border-r border-gray-200 dark:border-gray-800 hover:border-gray-400 dark:hover:border-gray-600 transition-colors duration-500">
+                            <div class="absolute right-[-4.5px] top-1.5 w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-gray-500 dark:group-hover:bg-gray-300 transition-colors duration-500"></div>
+                            <span class="text-xs text-gray-500 dark:text-gray-500 font-mono mb-3 block" dir="ltr">2015 — 2019</span>
+                            <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-2 tracking-tight">ليسانس في الفيزياء الأساسية</h3>
+                            <p class="text-sm text-gray-500">جامعة فرحات عباس سطيف-1</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Skills & Projects -->
+                <section>
+                    <div class="flex items-center gap-6 mb-12">
+                        <h2 class="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest shrink-0">مشاريع ومهارات</h2>
+                        <div class="h-px w-full bg-gray-100 dark:bg-gray-800"></div>
+                    </div>
+                    
+                    <div class="grid sm:grid-cols-2 gap-12 sm:gap-8">
+                        
+                        <!-- Project Card Minimalist -->
+                        <div class="group flex flex-col p-6 rounded-2xl bg-gray-50 dark:bg-gray-800/30 hover:bg-gray-100 dark:hover:bg-gray-800/80 transition-all duration-500 border border-transparent hover:border-gray-200 dark:hover:border-gray-700">
+                            <div class="flex justify-between items-start mb-6">
+                                <h3 class="font-bold text-gray-900 dark:text-white text-lg leading-snug">نمذجة ومحاكاة SMR</h3>
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors bg-white dark:bg-gray-900 w-8 h-8 rounded-full flex items-center justify-center shadow-sm border border-gray-100 dark:border-gray-700"><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>
+                            </div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6 flex-1">
+                                أداة <span dir="ltr">Python</span> مخصصة للنمذجة البارامترية والمحاكاة لقلب مفاعل نووي عام من الجيل الصغير المستقبلي.
+                            </p>
+                            <div class="mt-auto">
+                                <span class="text-[10px] font-mono font-bold text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-900 px-2.5 py-1 rounded inline-flex border border-gray-200 dark:border-gray-700 uppercase tracking-wider" dir="ltr">Python</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Skills List section -->
+                        <div class="flex flex-col gap-10">
+                            <div>
+                                <h3 class="font-bold text-gray-900 dark:text-white mb-5 text-sm uppercase tracking-widest opacity-80">مجالات تقنية</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1.5 text-xs font-bold text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 rounded hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">تطوير الويب</span>
+                                    <span class="px-3 py-1.5 text-xs font-bold text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 rounded hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" dir="ltr">Python</span>
+                                    <span class="px-3 py-1.5 text-xs font-bold text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 rounded hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">HTML / CSS</span>
+                                    <span class="px-3 py-1.5 text-xs font-bold text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 rounded hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">التصميم الغرافيكي</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 class="font-bold text-gray-900 dark:text-white mb-4 text-sm uppercase tracking-widest opacity-80">شخصية</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                   أمتلك روح التحدي وشغف مستمر، قادر على الإستقلالية التامة في العمل والتواصل البنّاء.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+                
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 pt-10 pb-10 mt-auto w-full">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8 text-center">
+            <div class="text-sm text-gray-500 font-medium">
+                &copy; <script>document.write(new Date().getFullYear())</script> فيزياء.تك. صُنع بشغف.
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+</html>

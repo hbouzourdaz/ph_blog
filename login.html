@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل دخول المدير | فيزياء.تك</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Alexandria', 'sans-serif'] },
+                    colors: { primary: '#2563eb' }
+                }
+            }
+        }
+        // Redirect if already logged in
+        if (localStorage.getItem('blog_admin') === 'true') {
+            window.location.href = 'editor.html';
+        }
+    </script>
+    <style>
+        body { font-family: 'Alexandria', sans-serif; }
+        ::selection { background-color: #dbeafe; color: #1e3a8a; }
+
+        /* Dark Mode overrides via pure CSS fallback - Soft Black */
+        html.dark body { background-color: #121212; color: #e5e5e5; }
+        html.dark .nav-blur { background-color: rgba(18, 18, 18, 0.9); border-color: #2a2a2a; }
+        html.dark .bg-white { background-color: #1e1e1e; border-color: #2a2a2a; }
+        html.dark .text-gray-900, html.dark h1, html.dark h2, html.dark h3 { color: #ffffff !important; }
+        html.dark .text-gray-800, html.dark .text-gray-700 { color: #e5e5e5; }
+        html.dark .text-gray-600 { color: #a3a3a3; }
+        html.dark .text-gray-500, html.dark .text-gray-400 { color: #737373; }
+        html.dark .bg-gray-100 { background-color: #2a2a2a; }
+        html.dark .bg-gray-50 { background-color: #121212; }
+        html.dark .bg-gray-900 { background-color: #2a2a2a; color: white;}
+        html.dark .border-gray-100, html.dark .border-gray-200, html.dark .border-gray-700, html.dark .border-gray-800 { border-color: #2a2a2a !important; }
+        html.dark input { background-color: #1e1e1e; border-color: #2a2a2a; color: white; }
+    </style>
+    <script src="theme.js"></script>
+</head>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen transition-colors duration-300">
+    
+    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 max-w-sm w-full mx-4">
+        <div class="text-center mb-8">
+            <a href="index.html" class="inline-flex items-center justify-center gap-2 font-bold text-2xl tracking-tight text-gray-900 hover:text-primary transition-colors mb-2">
+                <i class="fa-solid fa-atom text-primary"></i>
+                فيزياء<span class="text-primary">.</span>تك
+            </a>
+            <p class="text-gray-500 text-sm">لوحة تحكم المدير</p>
+        </div>
+
+        <form id="login-form">
+            <div class="mb-5">
+                <label class="block text-sm font-medium text-gray-700 mb-2">كلمة المرور</label>
+                <input type="password" id="password" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-colors outline-none text-center" placeholder="••••••••" dir="ltr">
+                <p id="error-msg" class="text-red-500 text-xs mt-2 hidden">كلمة المرور غير صحيحة.</p>
+            </div>
+            
+            <button type="submit" class="w-full bg-primary hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl transition-colors flex justify-center items-center gap-2">
+                تسجيل الدخول <i class="fa-solid fa-arrow-left-to-bracket"></i>
+            </button>
+        </form>
+        
+        <p class="text-center text-xs text-gray-400 mt-6 mt-4">
+            الرقم السري الافتراضي هو: admin
+        </p>
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const pass = document.getElementById('password').value;
+            // Password checked here - client side, used only to block normal users from accessing local static tools
+            if (pass === 'admin') {
+                localStorage.setItem('blog_admin', 'true');
+                window.location.href = 'editor.html';
+            } else {
+                document.getElementById('password').classList.add('border-red-500');
+                document.getElementById('error-msg').classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

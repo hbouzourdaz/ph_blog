@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نشر مقال | فيزياء.تك</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- EasyMDE -->
+    <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
+
+    <script>
+        // Auth Guard
+        if (localStorage.getItem('blog_admin') !== 'true') {
+            window.location.href = 'login.html';
+        }
+        
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Alexandria', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        primary: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Alexandria', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        ::selection { background-color: #dbeafe; color: #1e3a8a; }
+        .nav-blur {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        /* Dark Mode overrides via pure CSS fallback - Soft Black */
+        html.dark body { background-color: #121212; color: #e5e5e5; }
+        html.dark .nav-blur { background-color: rgba(18, 18, 18, 0.9); border-color: #2a2a2a; }
+        html.dark .bg-white { background-color: #1e1e1e; border-color: #2a2a2a; }
+        html.dark .text-gray-900, html.dark h1, html.dark h2, html.dark h3 { color: #ffffff !important; }
+        html.dark .text-gray-800 { color: #e5e5e5; }
+        html.dark .text-gray-600 { color: #a3a3a3; }
+        html.dark .text-gray-500 { color: #737373; }
+        html.dark .bg-gray-100 { background-color: #2a2a2a; }
+        html.dark .bg-gray-50 { background-color: #1e1e1e; }
+        html.dark .bg-gray-900 { background-color: #2a2a2a; color: white;}
+        html.dark .border-gray-100, html.dark .border-gray-200, html.dark .border-gray-700, html.dark .border-gray-800 { border-color: #2a2a2a !important; }
+        html.dark input, html.dark textarea { background-color: #1e1e1e; border-color: #2a2a2a; color: white; }
+        
+        /* EasyMDE Dark Mode */
+        html.dark .editor-toolbar { background-color: #1e1e1e; border-color: #2a2a2a; }
+        html.dark .editor-toolbar i.separator { border-right-color: #2a2a2a; border-left-color: #2a2a2a; }
+        html.dark .editor-toolbar a { color: #e5e5e5 !important; }
+        html.dark .editor-toolbar a.active, html.dark .editor-toolbar a:hover { background: #2a2a2a; border-color: #333333; }
+        html.dark .CodeMirror { background-color: #121212; color: #e5e5e5; border-color: #2a2a2a; }
+        html.dark .editor-preview { background-color: #121212; color: #e5e5e5; }
+
+        /* Editor Overrides for RTL */
+        .editor-toolbar { text-align: right; }
+        .CodeMirror { text-align: right; font-family: 'Tajawal', sans-serif, 'JetBrains Mono'; direction: rtl; font-size: 1.1rem; }
+        .editor-preview { text-align: right; font-family: 'Tajawal', sans-serif; }
+    </style>
+    <script src="theme.js"></script>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased transition-colors duration-300">
+    <!-- Navbar -->
+    <nav class="fixed w-full top-0 z-50 nav-blur border-b border-gray-100 transition-all">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="index.html" class="font-bold text-xl tracking-tight text-gray-900 hover:text-primary transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-atom text-primary text-lg"></i>
+                    فيزياء<span class="text-primary">.</span>تك
+                </a>
+                
+                <div class="hidden sm:flex items-center space-x-6 space-x-reverse">
+                    <a href="index.html" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors bg-white px-3 py-1.5 rounded-lg border border-gray-200 shadow-sm"><i class="fa-solid fa-home ml-1"></i> الرئيسية</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Editor Container -->
+    <main class="max-w-4xl mx-auto px-6 sm:px-8 pt-28 pb-20">
+        <div class="bg-white p-6 sm:p-10 rounded-2xl shadow-sm border border-gray-100">
+            <h1 class="text-2xl font-bold mb-6 text-gray-900"><i class="fa-solid fa-pen-to-square text-primary mb-1 ml-2"></i> نشر مقال جديد</h1>
+            
+            <form id="editor-form" class="space-y-6">
+                <!-- Title -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">عنوان المقال</label>
+                    <input type="text" id="article-title" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-colors outline-none font-bold text-lg" placeholder="اكتب العنوان هنا...">
+                </div>
+
+                <!-- Meta Info (Image, Category, Read Time) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">رابط صورة الغلاف</label>
+                        <input type="url" id="article-image" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary outline-none" placeholder="https://example.com/image.jpg">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">التصنيف</label>
+                        <input type="text" id="article-category" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary outline-none" placeholder="مثال: فيزياء فلكية">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">مدة القراءة (بالدقائق)</label>
+                        <input type="number" id="article-readTime" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary outline-none" placeholder="5">
+                    </div>
+                </div>
+
+                <!-- Excerpt -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">مقتطف قصير (يظهر في القائمة)</label>
+                    <textarea id="article-excerpt" required rows="2" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary outline-none resize-none" placeholder="اكتب وصفاً موجزاً للمقال..."></textarea>
+                </div>
+
+                <!-- Editor Textarea -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">محتوى المقال (يدعم Markdown والفيديو HTML)</label>
+                    <textarea id="article-content"></textarea>
+                    <p class="text-xs text-gray-500 mt-2"><i class="fa-brands fa-markdown ml-1"></i> يمكنك استخدام Markdown، أو إدراج روابط فيديو باستخدام `&lt;iframe&gt;` أو `&lt;video&gt;`.</p>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="flex justify-end pt-4 border-t border-gray-100">
+                    <button type="submit" class="bg-primary hover:bg-blue-700 text-white font-medium px-8 py-3 rounded-xl transition-all shadow-sm hover:shadow-md flex items-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        نشر المقال
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Dependencies -->
+    <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
+    
+    <!-- Initialize -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mde = new EasyMDE({ 
+                element: document.getElementById('article-content'),
+                spellChecker: false,
+                direction: "rtl",
+                promptURLs: true,
+                placeholder: "ابدأ بكتابة مقالك العلمي هنا...",
+                toolbar: ["bold", "italic", "heading", "|", "quote", "unordered-list", "ordered-list", "|", "link", "image", "code", "table", "|", "preview", "side-by-side", "fullscreen", "|", "guide"]
+            });
+
+            // Auto-calculate Reading Time based on 200 words per minute
+            mde.codemirror.on("change", () => {
+                const text = mde.value() || "";
+                const wordCount = text.trim().split(/\s+/).filter(w => w.length > 0).length;
+                const readTime = Math.max(1, Math.ceil(wordCount / 200));
+                document.getElementById('article-readTime').value = readTime;
+            });
+
+            document.getElementById('editor-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const content = mde.value();
+                
+                if (!content.trim()) {
+                    alert('يرجى كتابة محتوى المقال');
+                    return;
+                }
+
+                const title = document.getElementById('article-title').value;
+                const dateNum = Date.now().toString().slice(-4);
+                // Creating a simplified slug including arabic characters
+                const id = title.trim().substring(0, 30).replace(/\s+/g, '-').replace(/[^\w-_\u0600-\u06FF]/g, '').toLowerCase() + '-' + dateNum;
+
+                const articleData = {
+                    id: id,
+                    title: title.replace(/'/g, "\\'"),
+                    excerpt: document.getElementById('article-excerpt').value.replace(/'/g, "\\'"),
+                    image: document.getElementById('article-image').value,
+                    category: document.getElementById('article-category').value,
+                    readTime: document.getElementById('article-readTime').value,
+                    date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit' }),
+                    file: `posts/${id}.md`
+                };
+
+                // Create the Markdown File download
+                const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${id}.md`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                // Create the code snippet for articles.js
+                const jsonText = `{
+    id: '${articleData.id}',
+    title: '${articleData.title}',
+    excerpt: '${articleData.excerpt}',
+    image: '${articleData.image}',
+    category: '${articleData.category}',
+    readTime: '${articleData.readTime}',
+    date: '${articleData.date}',
+    file: '${articleData.file}'
+},`;
+
+                // Alert the user and show code in prompt to easily copy
+                prompt("تم تحميل ملف Markdown بنجاح! ضعه داخل مجلد posts. ثم قم بنسخ الكود التالي وإضافته إلى داخل مصفوفة articlesList في ملف articles.js:", jsonText);
+                console.log("الصق هذا الكود في ملف articles.js:\n", jsonText);
+                
+                // Keep page instead of redirecting so they don't lose the prompt/log
+            });
+        });
+    </script>
+</body>
+</html>
