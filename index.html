@@ -104,13 +104,47 @@
                         <i class="fa-solid fa-sun hidden dark:block"></i>
                     </button>
                     <!-- Mobile Menu Toggle -->
-                    <button class="sm:hidden text-gray-500 hover:text-gray-900">
-                        <i class="fa-solid fa-bars-staggered"></i>
+                    <button id="mobile-menu-btn" class="sm:hidden text-gray-500 hover:text-gray-900 w-8 h-8 flex items-center justify-center">
+                        <i class="fa-solid fa-bars-staggered" id="menu-icon-open"></i>
+                        <i class="fa-solid fa-xmark hidden" id="menu-icon-close"></i>
                     </button>
                 </div>
             </div>
         </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="sm:hidden hidden border-t border-gray-100 dark:border-gray-800 nav-blur">
+            <div class="max-w-4xl mx-auto px-6 py-6 flex flex-col gap-4">
+                <a href="index.html" class="text-base font-bold text-gray-900 dark:text-white hover:text-primary transition-colors py-2 border-b border-gray-100 dark:border-gray-800">الرئيسية</a>
+                <a href="#articles" id="mobile-articles-link" class="text-base font-bold text-gray-900 dark:text-white hover:text-primary transition-colors py-2 border-b border-gray-100 dark:border-gray-800">المقالات</a>
+                <a href="about.html" class="text-base font-bold text-gray-900 dark:text-white hover:text-primary transition-colors py-2 border-b border-gray-100 dark:border-gray-800">عن الكاتب</a>
+                <a href="privacy.html" class="text-sm font-medium text-gray-400 dark:text-gray-500 hover:text-primary transition-colors py-2">سياسة الخصوصية</a>
+            </div>
+        </div>
     </nav>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIconOpen.classList.toggle('hidden');
+            menuIconClose.classList.toggle('hidden');
+        });
+
+        // Close menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIconOpen.classList.remove('hidden');
+                menuIconClose.classList.add('hidden');
+            });
+        });
+    </script>
 
     <!-- Main Content Container -->
     <!-- Main Content Container -->
