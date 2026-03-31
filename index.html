@@ -82,7 +82,7 @@
 
     <!-- Minimal Navbar -->
     <nav class="fixed w-full top-0 z-50 nav-blur border-b border-gray-100 transition-all">
-        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
             <div class="flex justify-between items-center h-16 relative">
                 <!-- Logo -->
                 <a href="index.html" class="font-extrabold text-xl tracking-tight text-gray-900 group hover:text-primary transition-colors flex items-center gap-2">
@@ -92,13 +92,18 @@
 
                 <!-- Desktop Menu -->
                 <div class="hidden sm:flex items-center space-x-6 space-x-reverse">
-                    <a href="about.html" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">عن الكاتب</a>
-                    <a href="#articles" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">المقالات</a>
+                    <a href="index.html" class="text-sm font-bold text-primary border-b-2 border-primary pb-1">الفيزياء</a>
+                    <a href="programming.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">البرمجة</a>
+                    <a href="hub.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">المستودع الرقمي</a>
+                    <a href="about.html" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">عن المنصة</a>
                     <div id="admin-menu" class="flex items-center gap-2"></div>
                 </div>
 
                 <!-- Dark Mode / Extra Actions -->
                 <div class="flex items-center gap-4">
+                    <button class="search-toggle text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer" title="بحث (Ctrl+K)">
+                        <i class="fa-solid fa-search"></i>
+                    </button>
                     <button class="theme-toggle text-gray-400 hover:text-gray-900 transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 cursor-pointer">
                         <i class="fa-solid fa-moon dark:hidden"></i>
                         <i class="fa-solid fa-sun hidden dark:block"></i>
@@ -115,10 +120,16 @@
         <!-- Mobile Menu Panel -->
         <div id="mobile-menu" class="sm:hidden hidden border-t border-gray-100 dark:border-gray-800 nav-blur">
             <div class="max-w-4xl mx-auto px-6 py-6 flex flex-col gap-4">
-                <a href="index.html" class="text-base font-bold text-gray-900 dark:text-white hover:text-primary transition-colors py-2 border-b border-gray-100 dark:border-gray-800">الرئيسية</a>
-                <a href="#articles" id="mobile-articles-link" class="text-base font-bold text-gray-900 dark:text-white hover:text-primary transition-colors py-2 border-b border-gray-100 dark:border-gray-800">المقالات</a>
-                <a href="about.html" class="text-base font-bold text-gray-900 dark:text-white hover:text-primary transition-colors py-2 border-b border-gray-100 dark:border-gray-800">عن الكاتب</a>
-                <a href="privacy.html" class="text-sm font-medium text-gray-400 dark:text-gray-500 hover:text-primary transition-colors py-2">سياسة الخصوصية</a>
+                <a href="index.html" class="text-base font-bold text-primary py-2 border-b border-gray-100 dark:border-gray-800">الفيزياء</a>
+                <a href="programming.html" class="text-base font-bold text-gray-900 dark:text-white hover:text-primary transition-colors py-2 border-b border-gray-100 dark:border-gray-800">البرمجة</a>
+                <a href="hub.html" class="text-base font-bold text-gray-900 dark:text-white hover:text-primary transition-colors py-2 border-b border-gray-100 dark:border-gray-800">المستودع الرقمي</a>
+                <a href="about.html" class="text-base font-bold text-gray-900 dark:text-white hover:text-primary transition-colors py-2 border-b border-gray-100 dark:border-gray-800">عن المنصة</a>
+                <a href="privacy.html" class="text-sm font-medium text-gray-400 hover:text-primary transition-colors py-1">الخصوصية</a>
+                <p class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-6">استكشف التخصصات:</p>
+                <div class="flex flex-wrap gap-2 mb-6 sm:mb-10">
+                    <button id="filter-bookmarks-btn" class="px-4 py-2 border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#1a1a1a] hover:bg-yellow-50 dark:hover:bg-yellow-900/20 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-bold transition-all shadow-sm flex items-center gap-2"><i class="fa-regular text-yellow-500 fa-star"></i> مفضلتي</button>
+                    <span class="w-px h-8 bg-gray-200 dark:bg-gray-700 self-center hidden sm:block mx-2"></span>
+                    <button class="category-tag px-4 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-primary hover:text-white dark:hover:bg-primary text-gray-700 dark:text-gray-300 rounded-lg text-sm font-bold transition-all shadow-sm" data-cat="">الكل</button>
             </div>
         </div>
     </nav>
@@ -148,15 +159,15 @@
 
     <!-- Main Content Container -->
     <!-- Main Content Container -->
-    <main class="max-w-4xl mx-auto px-6 sm:px-8 pt-32 pb-24 fade-in flex flex-col gap-28">
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 pt-24 sm:pt-32 pb-16 sm:pb-24 fade-in flex flex-col gap-16 sm:gap-28">
         
         <!-- Hero Section -->
         <header class="text-right flex flex-col items-start relative mt-8 sm:mt-12">
             <!-- decorative equation -->
-            <div class="absolute top-0 right-0 -mt-10 -mr-16 text-[100px] md:text-[140px] font-bold text-gray-100 dark:text-gray-900/40 select-none z-[-1] opacity-60 font-serif leading-none italic pointer-events-none">E=mc²</div>
+            <div class="absolute top-0 right-0 -mt-10 -mr-4 sm:-mr-16 text-[60px] sm:text-[100px] md:text-[140px] font-bold text-gray-100 dark:text-gray-900/40 select-none z-[-1] opacity-60 font-serif leading-none italic pointer-events-none hidden sm:block">E=mc²</div>
 
             <div class="h-px w-24 bg-primary mb-10 opacity-40"></div>
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-8 leading-[1.4] w-full text-right sm:text-center md:text-right">
+            <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white mb-6 sm:mb-8 leading-[1.4] w-full text-right sm:text-center md:text-right">
                 تبسيط أسرار الكون،
                 <br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-l from-gray-400 to-gray-600 dark:from-gray-500 dark:to-gray-300">من الكوانتم إلى المجرات.</span>
@@ -188,10 +199,10 @@
             <!-- Topics inline -->
             <div class="flex flex-wrap gap-2.5 mb-16">
                 <span class="text-xs font-mono text-gray-400 dark:text-gray-600 self-center ml-2 border-l border-gray-200 dark:border-gray-800 pl-4 py-1">تصنيفات:</span>
-                <span data-cat="فيزياء الكم" class="category-tag cursor-pointer px-4 py-1.5 text-xs font-mono font-bold rounded-lg border border-gray-200 dark:border-gray-700/80 bg-white dark:bg-[#121212] text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary hover:border-primary/30 dark:hover:border-primary/30 hover:bg-blue-50/50 dark:hover:bg-blue-900/10 shadow-sm transition-all focus:scale-95">فيزياء الكم</span>
-                <span data-cat="النسبية العامة" class="category-tag cursor-pointer px-4 py-1.5 text-xs font-mono font-bold rounded-lg border border-gray-200 dark:border-gray-700/80 bg-white dark:bg-[#121212] text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary hover:border-primary/30 dark:hover:border-primary/30 hover:bg-blue-50/50 dark:hover:bg-blue-900/10 shadow-sm transition-all focus:scale-95">النسبية العامة</span>
+                <span data-cat="أخبار الفيزياء" class="category-tag cursor-pointer px-4 py-1.5 text-xs font-mono font-bold rounded-lg border border-gray-200 dark:border-gray-700/80 bg-white dark:bg-[#121212] text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary hover:border-primary/30 dark:hover:border-primary/30 hover:bg-blue-50/50 dark:hover:bg-blue-900/10 shadow-sm transition-all focus:scale-95">أخبار الفيزياء</span>
+                <span data-cat="أخبار الذكاء الاصطناعي" class="category-tag cursor-pointer px-4 py-1.5 text-xs font-mono font-bold rounded-lg border border-gray-200 dark:border-gray-700/80 bg-white dark:bg-[#121212] text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary hover:border-primary/30 dark:hover:border-primary/30 hover:bg-blue-50/50 dark:hover:bg-blue-900/10 shadow-sm transition-all focus:scale-95">أخبار الذكاء الاصطناعي</span>
+                <span data-cat="الذكاء الاصطناعي البيئي" class="category-tag cursor-pointer px-4 py-1.5 text-xs font-mono font-bold rounded-lg border border-gray-200 dark:border-gray-700/80 bg-white dark:bg-[#121212] text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary hover:border-primary/30 dark:hover:border-primary/30 hover:bg-blue-50/50 dark:hover:bg-blue-900/10 shadow-sm transition-all focus:scale-95">الذكاء الاصطناعي البيئي</span>
                 <span data-cat="الفيزياء الفلكية" class="category-tag cursor-pointer px-4 py-1.5 text-xs font-mono font-bold rounded-lg border border-gray-200 dark:border-gray-700/80 bg-white dark:bg-[#121212] text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary hover:border-primary/30 dark:hover:border-primary/30 hover:bg-blue-50/50 dark:hover:bg-blue-900/10 shadow-sm transition-all focus:scale-95">الفيزياء الفلكية</span>
-                <span data-cat="الديناميكا الحرارية" class="category-tag cursor-pointer px-4 py-1.5 text-xs font-mono font-bold rounded-lg border border-gray-200 dark:border-gray-700/80 bg-white dark:bg-[#121212] text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary hover:border-primary/30 dark:hover:border-primary/30 hover:bg-blue-50/50 dark:hover:bg-blue-900/10 shadow-sm transition-all focus:scale-95">الديناميكا الحرارية</span>
             </div>
 
             <!-- Featured Article (First article, big hero card) -->
@@ -237,21 +248,22 @@
 
     <!-- Footer -->
     <footer class="border-t border-gray-100 dark:border-gray-800/50 bg-white dark:bg-[#121212] pt-12 pb-12 transition-colors">
-        <div class="max-w-4xl mx-auto px-6 sm:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-sm text-gray-400 dark:text-gray-500 font-mono tracking-widest uppercase text-center sm:text-right" dir="ltr">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6">
+            <div class="text-xs sm:text-sm text-gray-400 dark:text-gray-500 font-mono tracking-widest uppercase text-center sm:text-right" dir="ltr">
                 &copy; <script>document.write(new Date().getFullYear())</script> Physique.tech
             </div>
-            <div class="flex gap-6 text-xs font-bold font-mono tracking-widest uppercase text-gray-400 dark:text-gray-500">
-                <a href="#" class="hover:text-gray-900 dark:hover:text-white transition-colors">Twitter</a>
-                <a href="https://github.com/hbouzourdaz" class="hover:text-gray-900 dark:hover:text-white transition-colors">GitHub</a>
-                <a href="#" class="hover:text-gray-900 dark:hover:text-white transition-colors">LinkedIn</a>
-                <a href="privacy.html" class="hover:text-gray-900 dark:hover:text-white transition-colors">الخصوصية</a>
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-6 text-[10px] sm:text-xs font-bold font-mono tracking-widest uppercase text-gray-400 dark:text-gray-500">
+                <a href="index.html" class="hover:text-primary transition-colors">الفيزياء</a>
+                <a href="programming.html" class="hover:text-primary transition-colors">البرمجة</a>
+                <a href="hub.html" class="hover:text-primary transition-colors">المستودع الرقمي</a>
+                <a href="about.html" class="hover:text-primary transition-colors">عن المنصة</a>
+                <a href="privacy.html" class="hover:text-primary transition-colors">الخصوصية</a>
             </div>
         </div>
     </footer>
 
     <!-- Scroll to Top Button -->
-    <button id="scroll-to-top" class="fixed bottom-6 right-6 bg-primary text-white w-10 h-10 rounded shadow-lg flex items-center justify-center text-sm opacity-0 translate-y-10 transition-all duration-300 z-50 hover:bg-blue-700 pointer-events-none border border-transparent dark:border-blue-500/30">
+    <button id="scroll-to-top" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 bg-primary text-white w-10 h-10 rounded shadow-lg flex items-center justify-center text-sm opacity-0 translate-y-10 transition-all duration-300 z-50 hover:bg-blue-700 pointer-events-none border border-transparent dark:border-blue-500/30">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
@@ -284,6 +296,9 @@
                 if (!article) { featuredContainer.innerHTML = ''; return; }
                 featuredContainer.innerHTML = `
                     <a href="article.html?id=${article.id}" class="group block relative overflow-hidden rounded-2xl bg-gray-900 aspect-[16/8] sm:aspect-[16/7]">
+                        <button onclick="typeof toggleBookmark === 'function' && toggleBookmark('${article.id}', event)" title="إضافة للمفضلة" class="absolute top-4 left-4 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all backdrop-blur-md border bookmark-btn-${article.id} ${typeof isBookmarked === 'function' && isBookmarked(article.id) ? 'bg-yellow-500/20 border-yellow-500/50' : 'bg-white/10 hover:bg-white/20 border-white/10'} text-white">
+                            <i class="${typeof isBookmarked === 'function' && isBookmarked(article.id) ? 'fa-solid text-yellow-500' : 'fa-regular text-white/70 hover:text-white'} fa-star transition-colors"></i>
+                        </button>
                         <!-- Background Image -->
                         ${article.image ? `<img src="${article.image}" alt="${article.title}" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700">` : ''}
                         <!-- Gradient Overlay -->
@@ -312,6 +327,9 @@
             function renderArticleCard(article, isLast) {
                 return `
                     <article class="group relative py-8 lg:py-10 ${!isLast ? 'border-b border-gray-100 dark:border-gray-800/80' : ''} transition-all">
+                        <button onclick="typeof toggleBookmark === 'function' && toggleBookmark('${article.id}', event)" title="إضافة للمفضلة" class="absolute top-8 left-0 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all border border-transparent bookmark-btn-${article.id} ${typeof isBookmarked === 'function' && isBookmarked(article.id) ? 'bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200' : 'hover:bg-gray-100 dark:hover:bg-gray-800'}">
+                            <i class="${typeof isBookmarked === 'function' && isBookmarked(article.id) ? 'fa-solid text-yellow-500' : 'fa-regular text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white'} fa-star transition-colors text-sm sm:text-base"></i>
+                        </button>
                         <div class="flex flex-col sm:flex-row gap-6 sm:gap-10 items-start">
                             ${article.image ? `
                             <div class="w-full sm:w-1/3 md:w-56 aspect-[16/10] shrink-0 overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800">
@@ -377,11 +395,37 @@
             document.querySelectorAll('.category-tag').forEach(tag => {
                 tag.addEventListener('click', (e) => {
                     e.preventDefault();
+                    isSearchMode = false;
+                    document.getElementById('filter-bookmarks-btn').classList.remove('ring-2', 'ring-yellow-400', 'bg-yellow-50', 'dark:bg-yellow-900/20');
                     const searchInput = document.getElementById('search-input');
                     searchInput.value = e.target.getAttribute('data-cat');
                     searchInput.dispatchEvent(new Event('input'));
                     document.getElementById('articles').scrollIntoView({ behavior: 'smooth' });
                 });
+            });
+
+            // Bookmarks Filter
+            document.getElementById('filter-bookmarks-btn').addEventListener('click', (e) => {
+                e.preventDefault();
+                // visually deactivate all category tabs
+                document.querySelectorAll('.category-tag').forEach(t => t.classList.remove('bg-primary', 'text-white'));
+                e.currentTarget.classList.add('ring-2', 'ring-yellow-400', 'bg-yellow-50', 'dark:bg-yellow-900/20');
+                
+                if(typeof getBookmarks !== 'function') return;
+                const bmks = getBookmarks();
+                const filtered = allArticles.filter(a => bmks.includes(a.id.toString()));
+                
+                isSearchMode = true; // prevent feature overriding
+                renderList(filtered, false);
+                document.getElementById('articles').scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // Listen for global bookmarks update
+            window.addEventListener('bookmarksUpdated', () => {
+                // if currently on bookmarks tab, re-render
+                if(document.getElementById('filter-bookmarks-btn').classList.contains('ring-2')) {
+                    document.getElementById('filter-bookmarks-btn').click();
+                }
             });
 
             // Load More button
@@ -436,5 +480,6 @@
             });
         });
     </script>
+    <script src="search.js"></script>
 </body>
 </html>

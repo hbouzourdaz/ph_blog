@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قسم البرمجة | فيزياء.تك</title>
+    <meta name="description" content="قسم البرمجة: مسارات تعليمية مفصلة مع دروس ومراجع لأشهر لغات البرمجة وأطر العمل.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <!-- Markdown & Highlight.js (Not needed on this page anymore as we moved to lesson-view) -->
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Alexandria', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        primary: '#2563eb', // Blue-600
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Alexandria', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        
+        ::selection { background-color: #dbeafe; color: #1e3a8a; }
+        html { scroll-behavior: smooth; }
+        
+        /* Dark Mode */
+        html.dark body { background-color: #121212; color: #e5e5e5; }
+        html.dark .nav-blur { background-color: rgba(18, 18, 18, 0.9); border-color: #2a2a2a; }
+        html.dark .bg-white { background-color: #1e1e1e; border-color: #2a2a2a; }
+        html.dark .text-gray-900, html.dark h1, html.dark h2, html.dark h3 { color: #ffffff !important; }
+        html.dark .text-gray-800 { color: #e5e5e5; }
+        html.dark .text-gray-600 { color: #a3a3a3; }
+        html.dark .text-gray-500 { color: #737373; }
+        html.dark .bg-gray-100 { background-color: #2a2a2a; }
+        html.dark .bg-gray-50 { background-color: #1e1e1e; }
+        html.dark .border-gray-100, html.dark .border-gray-200 { border-color: #2a2a2a; }
+
+        .nav-blur {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        html.dark .glass-card {
+            background: rgba(30, 30, 30, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .lesson-enter {
+            animation: slideUpFade 0.5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes slideUpFade {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Scrollbar hide for mobile tabs */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        /* Custom Scrollbar for Lesson Content */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        html.dark .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; }
+
+        .markdown-content pre {
+            background: #1e1e1e !important;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .markdown-content code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+        .markdown-content h3 { font-size: 1.25rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; color: #1e293b; }
+        html.dark .markdown-content h3 { color: #f1f5f9; }
+        .markdown-content p { margin-bottom: 1rem; line-height: 1.8; }
+        .markdown-content ul { list-style: disc; padding-right: 1.5rem; margin-bottom: 1rem; }
+    </style>
+    <script src="theme.js"></script>
+</head>
+<body class="bg-[#fafafa] text-gray-800 antialiased transition-colors duration-300 relative">
+
+    <div class="fixed inset-0 pointer-events-none z-[-1]">
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:32px_32px] dark:hidden"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px] hidden dark:block"></div>
+        <div class="absolute left-0 right-0 top-0 h-[600px] w-full bg-[radial-gradient(circle_400px_at_50%_0%,#3b82f615,transparent)]"></div>
+    </div>
+
+    <!-- Minimal Navbar -->
+    <nav class="fixed w-full top-0 z-50 nav-blur border-b border-gray-100 transition-all">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
+            <div class="flex justify-between items-center h-16 relative">
+                <a href="index.html" class="font-extrabold text-xl tracking-tight text-gray-900 group hover:text-primary transition-colors flex items-center gap-2">
+                    <span class="text-primary font-serif italic text-2xl group-hover:rotate-12 transition-transform duration-300">Ψ</span>
+                    فيزياء<span class="text-primary opacity-50">.</span>تك
+                </a>
+                <!-- Desktop Menu -->
+                <div class="hidden sm:flex items-center space-x-6 space-x-reverse">
+                    <a href="index.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">الفيزياء</a>
+                    <a href="programming.html" class="text-sm font-bold text-primary border-b-2 border-primary pb-1">البرمجة</a>
+                    <a href="hub.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">المستودع الرقمي</a>
+                    <a href="about.html" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">عن المنصة</a>
+                    <div id="admin-menu" class="flex items-center gap-2"></div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="search-toggle text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer" title="بحث (Ctrl+K)">
+                        <i class="fa-solid fa-search"></i>
+                    </button>
+                    <button class="theme-toggle text-gray-400 hover:text-gray-900 transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 cursor-pointer">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:block"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="sm:hidden text-gray-500 hover:text-gray-900 w-8 h-8 flex items-center justify-center">
+                        <i class="fa-solid fa-bars-staggered" id="menu-icon-open"></i>
+                        <i class="fa-solid fa-xmark hidden" id="menu-icon-close"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="sm:hidden hidden border-t border-gray-100 dark:border-gray-800 nav-blur">
+            <div class="max-w-4xl mx-auto px-6 py-6 flex flex-col gap-4">
+                <a href="index.html" class="text-base font-bold text-gray-900 dark:text-white hover:text-primary transition-colors py-2 border-b border-gray-100 dark:border-gray-800">الفيزياء</a>
+                <a href="programming.html" class="text-base font-bold text-primary py-2 border-b border-gray-100 dark:border-gray-800">البرمجة</a>
+                <a href="hub.html" class="text-base font-bold text-gray-900 dark:text-white hover:text-primary transition-colors py-2 border-b border-gray-100 dark:border-gray-800">المستودع الرقمي</a>
+                <a href="about.html" class="text-base font-bold text-gray-900 dark:text-white hover:text-primary transition-colors py-2 border-b border-gray-100 dark:border-gray-800">عن المنصة</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 pt-24 sm:pt-28">
+        <!-- Breadcrumb -->
+        <nav class="mb-2 text-sm font-medium text-gray-500 dark:text-gray-400" aria-label="Breadcrumb">
+            <ol class="flex items-center gap-2">
+                <li>
+                    <a href="index.html" class="hover:text-primary transition-colors flex items-center gap-1.5 font-bold"><i class="fa-solid fa-house text-xs"></i> الرئيسية</a>
+                </li>
+                <li><i class="fa-solid fa-chevron-left text-[10px] opacity-50"></i></li>
+                <li class="text-gray-900 dark:text-gray-100" aria-current="page">البرمجة</li>
+            </ol>
+        </nav>
+    </div>
+    
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 pt-4 pb-24 flex flex-col lg:flex-row gap-6 sm:gap-10">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-full lg:w-72 shrink-0">
+            <div class="sticky top-24 bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-800 rounded-2xl p-4 shadow-sm">
+                <div class="mb-4 px-2">
+                    <h2 class="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-code text-primary"></i> مسارات البرمجة
+                    </h2>
+                    <p class="text-xs text-gray-500 mt-1">اختر اللغة أو إطار العمل</p>
+                </div>
+                
+                <div class="relative">
+                    <!-- Mobile Horizontal Scroll Tabs vs Desktop Vertical Block -->
+                    <div id="languages-sidebar" class="flex flex-row lg:flex-col gap-2 overflow-x-auto no-scrollbar pb-2 lg:pb-0">
+                        <!-- Filled dynamically by courses.js -->
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Course Content Container -->
+        <div id="course-container" class="flex-1 glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-10 shadow-lg min-h-[400px] sm:min-h-[500px]">
+            <div class="h-full flex items-center justify-center text-gray-400">
+                <i class="fa-solid fa-spinner fa-spin text-3xl"></i>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Scripts -->
+    <!-- Load data files -->
+    <script src="courses_lang.js"></script>
+    <script src="courses_frameworks.js"></script>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIconOpen.classList.toggle('hidden');
+            menuIconClose.classList.toggle('hidden');
+        });
+
+        // Combine data
+        let coursesData = {};
+        if (typeof languagesData !== 'undefined') { Object.assign(coursesData, languagesData); }
+        if (typeof frameworksData !== 'undefined') { Object.assign(coursesData, frameworksData); }
+
+        function renderSidebar() {
+            const sidebar = document.getElementById('languages-sidebar');
+            let html = '';
+            
+            // Group by category
+            const categories = {
+                "اللغات الأساسية": Object.keys(coursesData).filter(k => coursesData[k].category === "language"),
+                "أطر العمل (Frameworks)": Object.keys(coursesData).filter(k => coursesData[k].category === "framework")
+            };
+
+            for (const [catName, keys] of Object.entries(categories)) {
+                if(keys.length === 0) continue;
+                html += `<div class="hidden lg:block text-xs font-bold text-gray-400 mt-4 mb-2 px-2 uppercase tracking-widest">${catName}</div>`;
+                keys.forEach(key => {
+                    const data = coursesData[key];
+                    html += `
+                        <button onclick="switchLanguage('${key}')" id="tab-${key}" class="lang-tab shrink-0 w-auto lg:w-full text-right px-4 py-3 rounded-xl font-bold transition-all border-2 border-transparent text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800/50 flex items-center gap-3">
+                            <i class="${data.icon} text-lg w-5 text-center" style="color: ${data.hexColor}"></i>
+                            <span class="whitespace-nowrap">${data.tabName}</span>
+                        </button>
+                    `;
+                });
+            }
+            sidebar.innerHTML = html;
+        }
+
+        function renderLessons(langKey) {
+            const data = coursesData[langKey];
+            if (!data) return;
+            const container = document.getElementById('course-container');
+            
+            let html = `
+                <div class="mb-10 lg:text-right text-center flex flex-col items-center lg:items-start">
+                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl mb-4 shadow-sm" style="background-color: ${data.hexColor}20; color: ${data.hexColor}; border: 1px solid ${data.hexColor}40;">
+                        <i class="${data.icon}"></i>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">
+                        ${data.title}
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400 font-medium leading-relaxed max-w-2xl">
+                        ${data.description}
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 relative">
+            `;
+
+            data.lessons.forEach((lesson, index) => {
+                const animDelay = (index * 0.05) + 's';
+                
+                let refsHtml = lesson.refs.map(ref => `
+                    <a href="${ref.url}" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-[#121212] border border-gray-200 dark:border-gray-700/80 rounded-lg text-xs font-bold text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors shadow-sm w-full sm:w-auto">
+                        <i class="fa-brands ${ref.icon} ${ref.icon === 'fa-youtube' ? 'text-red-500' : 'text-blue-500'}"></i>
+                        <span class="truncate max-w-[150px] sm:max-w-[200px]">${ref.text}</span>
+                    </a>
+                `).join('');
+
+                html += `
+                    <a href="lesson-view.html?course=${langKey}&index=${index}" class="lesson-enter cursor-pointer bg-white/60 dark:bg-[#1a1a1a]/80 border border-gray-100 dark:border-gray-800 rounded-2xl p-5 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-md transition-all group" style="animation-delay: ${animDelay};">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center font-bold font-mono text-sm shadow-inner group-hover:scale-110 transition-transform" style="background-color: ${data.hexColor}20; color: ${data.hexColor};">
+                                ${index + 1}
+                            </div>
+                            <h3 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white flex-1 leading-tight group-hover:text-primary transition-colors">
+                                ${lesson.title}
+                            </h3>
+                            <i class="fa-solid fa-arrow-left text-xs opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-primary"></i>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed min-h-[40px]">
+                            ${lesson.desc}
+                        </p>
+                    </a>
+                `;
+            });
+
+            html += `</div>`;
+            container.innerHTML = html;
+        }
+
+        function switchLanguage(langKey) {
+            document.querySelectorAll('.lang-tab').forEach(tab => {
+                tab.classList.remove('active', 'border-gray-200', 'bg-white', 'shadow-sm', 'dark:border-gray-700', 'dark:bg-[#121212]');
+                tab.classList.add('border-transparent');
+            });
+
+            const activeTab = document.getElementById(`tab-${langKey}`);
+            if(activeTab) {
+                activeTab.classList.remove('border-transparent');
+                activeTab.classList.add('active', 'border-gray-200', 'bg-white', 'shadow-sm', 'dark:border-gray-700', 'dark:bg-[#121212]');
+            }
+
+            const container = document.getElementById('course-container');
+            container.style.opacity = '0';
+            setTimeout(() => {
+                renderLessons(langKey);
+                container.style.opacity = '1';
+                container.style.transition = 'opacity 0.3s ease-out';
+            }, 150);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSidebar();
+            // Check if course in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const courseInUrl = urlParams.get('course');
+            
+            const firstKey = courseInUrl && coursesData[courseInUrl] ? courseInUrl : Object.keys(coursesData)[0];
+            if(firstKey) switchLanguage(firstKey);
+        });
+    </script>
+    <script src="search.js"></script>
+</body>
+</html>

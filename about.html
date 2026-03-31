@@ -56,7 +56,7 @@
     
     <!-- Navbar -->
     <nav class="fixed w-full top-0 z-50 nav-blur border-b border-gray-100 dark:border-gray-800 transition-all">
-        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
             <div class="flex justify-between items-center h-16 relative">
                 <!-- Logo -->
                 <a href="index.html" class="font-extrabold text-xl tracking-tight text-gray-900 group hover:text-primary transition-colors flex items-center gap-2">
@@ -64,19 +64,58 @@
                     فيزياء<span class="text-primary opacity-50">.</span>تك
                 </a>
                 
-                <div class="hidden sm:flex items-center space-x-4 space-x-reverse">
-                    <button class="theme-toggle text-gray-400 hover:text-gray-900 transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer text-lg">
+                <div class="hidden sm:flex items-center space-x-6 space-x-reverse">
+                    <a href="index.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">الفيزياء</a>
+                    <a href="programming.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">البرمجة</a>
+                    <a href="hub.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">المستودع الرقمي</a>
+                    <a href="about.html" class="text-sm font-bold text-primary border-b-2 border-primary pb-1">عن المنصة</a>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <button class="search-toggle text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer" title="بحث (Ctrl+K)">
+                        <i class="fa-solid fa-search"></i>
+                    </button>
+                    <button class="theme-toggle text-gray-400 hover:text-gray-900 transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 cursor-pointer text-lg">
                         <i class="fa-solid fa-moon dark:hidden"></i>
                         <i class="fa-solid fa-sun hidden dark:block"></i>
                     </button>
-                    <a href="index.html" class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors px-3 py-1.5 rounded-lg border border-transparent hover:bg-gray-50 dark:hover:bg-gray-800"><i class="fa-solid fa-home ml-1"></i> الرئيسية</a>
-                    <a href="about.html" class="text-sm font-medium text-primary bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400 px-3 py-1.5 rounded-lg border border-blue-100 dark:border-blue-800 shadow-sm transition-colors cursor-default"><i class="fa-regular fa-id-card ml-1"></i> عن الكاتب</a>
+                    <button id="mobile-menu-btn" class="sm:hidden text-gray-500 hover:text-gray-900 w-8 h-8 flex items-center justify-center">
+                        <i class="fa-solid fa-bars-staggered" id="menu-icon-open"></i>
+                        <i class="fa-solid fa-xmark hidden" id="menu-icon-close"></i>
+                    </button>
                 </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="sm:hidden hidden border-t border-gray-100 dark:border-gray-800 nav-blur">
+            <div class="max-w-4xl mx-auto px-6 py-6 flex flex-col gap-4 text-right">
+                <a href="index.html" class="text-base font-bold text-gray-900 dark:text-white hover:text-primary transition-colors py-2 border-b border-gray-100 dark:border-gray-800">الفيزياء</a>
+                <a href="programming.html" class="text-base font-bold text-gray-900 dark:text-white hover:text-primary transition-colors py-2 border-b border-gray-100 dark:border-gray-800">البرمجة</a>
+                <a href="hub.html" class="text-base font-bold text-gray-900 dark:text-white hover:text-primary transition-colors py-2 border-b border-gray-100 dark:border-gray-800">المستودع الرقمي</a>
+                <a href="about.html" class="text-base font-bold text-primary py-2 border-b border-gray-100 dark:border-gray-800">عن المنصة</a>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-5xl mx-auto px-6 sm:px-8 pt-32 pb-24 fade-in">
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 pt-24 sm:pt-32 pb-16 sm:pb-24 fade-in">
+        
+        <!-- Breadcrumb & Site Intro -->
+        <nav class="mb-4 text-sm font-medium text-gray-500 dark:text-gray-400" aria-label="Breadcrumb">
+            <ol class="flex items-center gap-2">
+                <li>
+                    <a href="index.html" class="hover:text-primary transition-colors flex items-center gap-1.5 font-bold"><i class="fa-solid fa-house text-xs"></i> الرئيسية</a>
+                </li>
+                <li><i class="fa-solid fa-chevron-left text-[10px] opacity-50"></i></li>
+                <li class="text-gray-900 dark:text-gray-100" aria-current="page">عن المنصة</li>
+            </ol>
+        </nav>
+
+        <div class="mb-12 p-6 bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-800 rounded-2xl">
+            <h2 class="text-xl font-black text-primary mb-3">ما هي منصة فيزياء.تك؟</h2>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm sm:text-base italic">
+                بوابة رقمية متكاملة تهدف إلى جسر الهوة بين العلوم الفيزيائية النظرية والتطبيقات البرمجية الحديثة. نحن نؤمن بأن المستقبل يُبنى بمن يفهم قوانين الطبيعة ويتقن أدوات التكنولوجيا.
+            </p>
+        </div>
         
         <div class="flex flex-col lg:flex-row gap-16 lg:gap-24 relative">
             
@@ -89,7 +128,7 @@
                     </div>
                 </div>
                 
-                <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight">حكيم بوزورداز</h1>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight">حكيم بوزورداز</h1>
                 <p class="text-gray-500 dark:text-gray-500 font-mono text-sm tracking-widest uppercase mb-8 leading-relaxed" dir="ltr">
                     Physique des Rayonnements<br>&amp; Tech
                 </p>
@@ -214,13 +253,31 @@
 
     <!-- Footer -->
     <footer class="border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 pt-10 pb-10 mt-auto w-full">
-        <div class="max-w-4xl mx-auto px-6 sm:px-8 text-center">
-            <div class="text-sm text-gray-500 font-medium">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 text-center">
+            <div class="text-xs sm:text-sm text-gray-500 font-medium">
                 &copy; <script>document.write(new Date().getFullYear())</script> فيزياء.تك. صُنع بشغف.
             </div>
         </div>
     </footer>
 
-
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIconOpen.classList.toggle('hidden');
+            menuIconClose.classList.toggle('hidden');
+        });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIconOpen.classList.remove('hidden');
+                menuIconClose.classList.add('hidden');
+            });
+        });
+    </script>
+    <script src="search.js"></script>
 </body>
 </html>
